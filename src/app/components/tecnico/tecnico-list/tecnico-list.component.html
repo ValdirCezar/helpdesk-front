@@ -35,7 +35,14 @@
 
          <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
-            <td mat-cell *matCellDef="let element"> Ações </td>
+            <td mat-cell *matCellDef="let element">
+               <a routerLink="">
+                  <i class="material-icons edit">edit</i>
+               </a>
+               <a routerLink="">
+                  <i class="material-icons delete">delete</i>
+               </a>
+            </td>
          </ng-container>
 
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
