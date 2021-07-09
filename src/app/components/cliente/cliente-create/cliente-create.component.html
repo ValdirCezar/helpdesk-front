@@ -1,0 +1,69 @@
+<div class="container mat-elevation-z8">
+   <form class="form">
+
+      <h1 class="fullWidth">Cadastrar Cliente</h1>
+      <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Help Desk - Dicas de um DEV">
+
+      <section class="section">
+         <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
+         <mat-checkbox (click)="addPerfil(1)" [checked]="true" class="margin" color="primary">Cliente</mat-checkbox>
+         <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary">Cliente</mat-checkbox>
+       </section>
+
+       <mat-form-field class="fullWidth" appearance="legacy">
+         <mat-label>Nome</mat-label>
+         <input 
+         [(ngModel)]="cliente.nome"
+         name="nome"
+         [formControl]="nome"
+         required
+         matInput 
+         placeholder="Ex.. fulano de tal"
+         maxlength="50">
+         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+       </mat-form-field>
+       
+       <mat-form-field class="fullWidth" appearance="legacy">
+         <mat-label>CPF</mat-label>
+         <input 
+         [(ngModel)]="cliente.cpf"
+         name="cpf"
+         [formControl]="cpf"
+         required
+         matInput 
+         placeholder="Ex..000.000.000-00"
+         mask="000.000.000-00">
+         <mat-icon matSuffix>pin </mat-icon>
+       </mat-form-field>
+
+       <mat-form-field class="fullWidth" appearance="legacy">
+         <mat-label>E-mail</mat-label>
+         <input 
+         [(ngModel)]="cliente.email"
+         name="email"
+         [formControl]="email"
+         required
+         matInput 
+         placeholder="Ex.. fulano@mail.com">
+         <mat-icon matSuffix>email</mat-icon>
+       </mat-form-field>
+
+       <mat-form-field class="fullWidth" appearance="legacy">
+         <mat-label>Senha</mat-label>
+         <input 
+         [(ngModel)]="cliente.senha"
+         name="senha"
+         [formControl]="senha"
+         required
+         type="password" 
+         matInput 
+         placeholder="Ex.. 1234">
+         <mat-icon matSuffix>password</mat-icon>
+       </mat-form-field>
+
+       <button (click)="create()" [disabled]="!validaCampos()" class="fullWidth mat-elevation-z4" mat-flat-button color="primary">Cadastrar</button>
+       <button routerLink="../" class="fullWidth mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+   </form>
+
+   <p class="fullWidth">by Valdir Cezar</p>
+</div>
