@@ -1,1 +1,76 @@
-<p>chamado-list works!</p>
+<div class="container">
+
+   <h1>Listando chamados</h1>
+
+   <button class="mat-elevation-z8" mat-stroked-button color="primary">Novo chamado</button>
+
+   <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <mat-radio-group color="primary">
+      <mat-radio-button>ABERTO</mat-radio-button>
+      <mat-radio-button>ANDAMENTO</mat-radio-button>
+      <mat-radio-button>ENCERRADO</mat-radio-button>
+    </mat-radio-group>
+
+   <div class="mat-elevation-z8">
+
+      <table mat-table [dataSource]="ELEMENT_DATA">
+
+         <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef> Titulo </th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="cliente">
+            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{element.nomeCliente}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="tecnico">
+            <th mat-header-cell *matHeaderCellDef> Técnico </th>
+            <td mat-cell *matCellDef="let element"> {{element.nomeTecnico}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="dataAbertura">
+            <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
+            <td mat-cell *matCellDef="let element"> {{element.dataAbertura}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="prioridade">
+            <th mat-header-cell *matHeaderCellDef> Prioridade </th>
+            <td mat-cell *matCellDef="let element"> {{element.prioridade}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+               <a routerLink="">
+                  <i class="material-icons edit">edit</i>
+               </a>
+               <a routerLink="">
+                  <i class="material-icons delete">visibility</i>
+               </a>
+            </td>
+         </ng-container>
+
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 2, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+   </div>
+
+</div>
